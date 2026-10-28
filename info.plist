@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.marcotten.alfred-get-screenshot</string>
+	<key>connections</key>
+	<dict>
+		<key>59F3C075-CB38-4C15-84DD-0D322321DFD1</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>SF-MD-0000-0000-0000-000000000001</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>643C7293-143D-4B9C-8DE1-324B0B8D5A7B</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>SF-IMG-0000-0000-0000-000000000001</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>708457C5-1396-4E5C-B30B-E9B787ED8207</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>B924E703-9EF0-414B-BC8F-286A122A30BB</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>C5A1E0B2-7F3D-4E8A-9B61-2D4F8A7C3E10</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>9E2B7C44-1A6F-4D3B-8C25-6F0E3B9D1A72</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>DDD91D6C-93CF-4213-9986-47A057D48A35</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>FAD260C4-077E-4027-98C7-863DA3459AB2</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>FAD260C4-077E-4027-98C7-863DA3459AB2</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>B924E703-9EF0-414B-BC8F-286A122A30BB</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>SF-IMG-0000-0000-0000-000000000001</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>708457C5-1396-4E5C-B30B-E9B787ED8207</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>SF-MD-0000-0000-0000-000000000001</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>DDD91D6C-93CF-4213-9986-47A057D48A35</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Marc Otten</string>
+	<key>description</key>
+	<string>Pick a recent screenshot: copy image (screenshot), markdown link (screenshot-link), or browse all (screenshot-gallery)</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Get Screenshot</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>screenshot</string>
+				<key>subtext</key>
+				<string>Pick a recent screenshot, copy image to clipboard</string>
+				<key>text</key>
+				<string>screenshot</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>643C7293-143D-4B9C-8DE1-324B0B8D5A7B</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>path="$1"
+
+if [ -z "$path" ] || [ ! -f "$path" ]; then
+  echo "Screenshot not found"
+  exit 0
+fi
+
+
+# Copy to clipboard using AppleScript via stdin (avoids -e quoting issues)
+/usr/bin/osascript &lt;&lt;EOF 2&gt;/dev/null
+set the clipboard to (read (POSIX file "$path") as TIFF picture)
+EOF
+
+
+echo "${path##*/}"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>11</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>708457C5-1396-4E5C-B30B-E9B787ED8207</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<true/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>script</key>
+				<string></string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string>list-screenshots.js</string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Select screenshot (copy image)</string>
+				<key>type</key>
+				<integer>8</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>SF-IMG-0000-0000-0000-000000000001</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>screenshot</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>B924E703-9EF0-414B-BC8F-286A122A30BB</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>FAD260C4-077E-4027-98C7-863DA3459AB2</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>#!/bin/bash
+
+path=$1
+
+if [ -z "$path" ] || [ ! -f "$path" ]; then
+  echo "Screenshot not found"
+  exit 1
+fi
+
+# Build the markdown snippet, wrapping the path in &lt;&gt; to handle spaces
+markdown="![](&lt;$path&gt;)"
+
+echo "$markdown"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>11</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>DDD91D6C-93CF-4213-9986-47A057D48A35</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<true/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>script</key>
+				<string></string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string>list-screenshots.js</string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Select screenshot (copy markdown link)</string>
+				<key>type</key>
+				<integer>8</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>SF-MD-0000-0000-0000-000000000001</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>screenshot-link</string>
+				<key>subtext</key>
+				<string>Pick a recent screenshot, copy markdown link</string>
+				<key>text</key>
+				<string>screenshot-link</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>59F3C075-CB38-4C15-84DD-0D322321DFD1</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>screenshot-gallery</string>
+				<key>subtext</key>
+				<string>Show all screenshots fullscreen in a mosaic</string>
+				<key>text</key>
+				<string>screenshot-gallery</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>C5A1E0B2-7F3D-4E8A-9B61-2D4F8A7C3E10</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+<string>src="gallery.swift"
+bin="bin/screenshot-gallery"
+
+# Build on first use (and whenever the source changes)
+if [ ! -x "$bin" ] || [ "$src" -nt "$bin" ]; then
+  mkdir -p bin
+  if ! /usr/bin/swiftc -O -swift-version 5 -o "$bin" "$src" 2&gt;/tmp/screenshot-gallery-build.log; then
+    /usr/bin/osascript -e 'display notification "Build failed, see /tmp/screenshot-gallery-build.log" with title "Screenshot Gallery"'
+    exit 1
+  fi
+fi
+
+# Replace an already-open gallery so it always shows the latest screenshots
+/usr/bin/pkill -x screenshot-gallery 2&gt;/dev/null
+nohup "./$bin" "$HOME/Documents/screenshots" &gt;/dev/null 2&gt;&amp;1 &amp;</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>11</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>9E2B7C44-1A6F-4D3B-8C25-6F0E3B9D1A72</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>Type `screenshot` to pick a recent screenshot and copy the image to the clipboard.
+Type `screenshot-link` to pick a recent screenshot and copy a markdown image link to the clipboard.
+
+Screenshots are read from ~/Documents/screenshots (most recent first, up to 15).
+
+Type `screenshot-gallery` to browse all screenshots fullscreen in a mosaic (grouped by day):
+- click / ↵ : copy image   ⌥ : copy markdown link   ⌘ : reveal in Finder
+- ⌘O open · space preview · arrow keys navigate · esc close
+The gallery is a small Swift app (gallery.swift), compiled to bin/ on first use; thumbnails are cached in ~/Library/Caches/com.marcotten.alfred-get-screenshot.</string>
+	<key>uidata</key>
+	<dict>
+		<key>59F3C075-CB38-4C15-84DD-0D322321DFD1</key>
+		<dict>
+			<key>xpos</key>
+			<real>30.0</real>
+			<key>ypos</key>
+			<real>450.0</real>
+		</dict>
+		<key>643C7293-143D-4B9C-8DE1-324B0B8D5A7B</key>
+		<dict>
+			<key>xpos</key>
+			<real>30.0</real>
+			<key>ypos</key>
+			<real>150.0</real>
+		</dict>
+		<key>708457C5-1396-4E5C-B30B-E9B787ED8207</key>
+		<dict>
+			<key>xpos</key>
+			<real>500.0</real>
+			<key>ypos</key>
+			<real>150.0</real>
+		</dict>
+		<key>9E2B7C44-1A6F-4D3B-8C25-6F0E3B9D1A72</key>
+		<dict>
+			<key>xpos</key>
+			<real>240.0</real>
+			<key>ypos</key>
+			<real>700.0</real>
+		</dict>
+		<key>B924E703-9EF0-414B-BC8F-286A122A30BB</key>
+		<dict>
+			<key>xpos</key>
+			<real>890.0</real>
+			<key>ypos</key>
+			<real>185.0</real>
+		</dict>
+		<key>C5A1E0B2-7F3D-4E8A-9B61-2D4F8A7C3E10</key>
+		<dict>
+			<key>xpos</key>
+			<real>30.0</real>
+			<key>ypos</key>
+			<real>700.0</real>
+		</dict>
+		<key>DDD91D6C-93CF-4213-9986-47A057D48A35</key>
+		<dict>
+			<key>xpos</key>
+			<real>480.0</real>
+			<key>ypos</key>
+			<real>450.0</real>
+		</dict>
+		<key>FAD260C4-077E-4027-98C7-863DA3459AB2</key>
+		<dict>
+			<key>xpos</key>
+			<real>675.0</real>
+			<key>ypos</key>
+			<real>445.0</real>
+		</dict>
+		<key>SF-IMG-0000-0000-0000-000000000001</key>
+		<dict>
+			<key>xpos</key>
+			<real>240.0</real>
+			<key>ypos</key>
+			<real>150.0</real>
+		</dict>
+		<key>SF-MD-0000-0000-0000-000000000001</key>
+		<dict>
+			<key>xpos</key>
+			<real>240.0</real>
+			<key>ypos</key>
+			<real>450.0</real>
+		</dict>
+	</dict>
+	<key>userconfigurationconfig</key>
+	<array/>
+	<key>version</key>
+	<string>1.2.0</string>
+	<key>webaddress</key>
+	<string></string>
+</dict>
+</plist>
