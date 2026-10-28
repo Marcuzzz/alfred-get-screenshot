@@ -122,3 +122,6 @@ config/setup.cfg
 .DS_Store
 credentials.storage
 
+
+# Built workflow packages
+releases/
