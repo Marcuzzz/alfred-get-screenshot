@@ -398,7 +398,7 @@ echo "$markdown"</string>
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-<string>src="gallery.swift"
+				<string>src="gallery.swift"
 bin="bin/screenshot-gallery"
 
 # Build on first use (and whenever the source changes)
@@ -443,78 +443,78 @@ The gallery is a small Swift app (gallery.swift), compiled to bin/ on first use;
 		<key>59F3C075-CB38-4C15-84DD-0D322321DFD1</key>
 		<dict>
 			<key>xpos</key>
-			<real>30.0</real>
+			<real>30</real>
 			<key>ypos</key>
-			<real>450.0</real>
+			<real>450</real>
 		</dict>
 		<key>643C7293-143D-4B9C-8DE1-324B0B8D5A7B</key>
 		<dict>
 			<key>xpos</key>
-			<real>30.0</real>
+			<real>30</real>
 			<key>ypos</key>
-			<real>150.0</real>
+			<real>150</real>
 		</dict>
 		<key>708457C5-1396-4E5C-B30B-E9B787ED8207</key>
 		<dict>
 			<key>xpos</key>
-			<real>500.0</real>
+			<real>500</real>
 			<key>ypos</key>
-			<real>150.0</real>
+			<real>150</real>
 		</dict>
 		<key>9E2B7C44-1A6F-4D3B-8C25-6F0E3B9D1A72</key>
 		<dict>
 			<key>xpos</key>
-			<real>240.0</real>
+			<real>240</real>
 			<key>ypos</key>
-			<real>700.0</real>
+			<real>700</real>
 		</dict>
 		<key>B924E703-9EF0-414B-BC8F-286A122A30BB</key>
 		<dict>
 			<key>xpos</key>
-			<real>890.0</real>
+			<real>890</real>
 			<key>ypos</key>
-			<real>185.0</real>
+			<real>185</real>
 		</dict>
 		<key>C5A1E0B2-7F3D-4E8A-9B61-2D4F8A7C3E10</key>
 		<dict>
 			<key>xpos</key>
-			<real>30.0</real>
+			<real>30</real>
 			<key>ypos</key>
-			<real>700.0</real>
+			<real>700</real>
 		</dict>
 		<key>DDD91D6C-93CF-4213-9986-47A057D48A35</key>
 		<dict>
 			<key>xpos</key>
-			<real>480.0</real>
+			<real>480</real>
 			<key>ypos</key>
-			<real>450.0</real>
+			<real>450</real>
 		</dict>
 		<key>FAD260C4-077E-4027-98C7-863DA3459AB2</key>
 		<dict>
 			<key>xpos</key>
-			<real>675.0</real>
+			<real>675</real>
 			<key>ypos</key>
-			<real>445.0</real>
+			<real>445</real>
 		</dict>
 		<key>SF-IMG-0000-0000-0000-000000000001</key>
 		<dict>
 			<key>xpos</key>
-			<real>240.0</real>
+			<real>240</real>
 			<key>ypos</key>
-			<real>150.0</real>
+			<real>150</real>
 		</dict>
 		<key>SF-MD-0000-0000-0000-000000000001</key>
 		<dict>
 			<key>xpos</key>
-			<real>240.0</real>
+			<real>240</real>
 			<key>ypos</key>
-			<real>450.0</real>
+			<real>450</real>
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>
 	<array/>
 	<key>version</key>
-	<string>1.2.0</string>
+	<string>1.2.1</string>
 	<key>webaddress</key>
 	<string></string>
 </dict>
